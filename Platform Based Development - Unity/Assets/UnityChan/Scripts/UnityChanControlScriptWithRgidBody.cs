@@ -90,6 +90,11 @@ namespace UnityChan
 		// 以下、メイン処理.リジッドボディと絡めるので、FixedUpdate内で処理を行う.
 		void FixedUpdate ()
 		{
+			//kalau jatoh, reset
+			if (transform.position.y < -10.0f) {
+				transform.position = new Vector3(0.0f,1.0f,0.0f);
+			}
+
 			if (isStart){
 			float h = Input.GetAxis ("Horizontal");				// 入力デバイスの水平軸をhで定義
 			float v = Input.GetAxis ("Vertical") * 2f;				// 入力デバイスの垂直軸をvで定義
@@ -136,7 +141,7 @@ namespace UnityChan
 					}
 				}
 			}
-		
+			
 
 			// 上下のキー入力でキャラクターを移動させる
 			transform.localPosition += velocity * Time.fixedDeltaTime;
